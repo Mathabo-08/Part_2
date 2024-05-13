@@ -32,7 +32,7 @@ namespace Recipe_Application
         {
             if (displaySelectedRecipe)
             {
-                Console.WriteLine($"\nThe total calories of the recipe '{recipeName}' exceed 300!");
+                Console.WriteLine($"\nThe total calories of the recipe {recipeName} exceed 300!");
             }
         }
 
@@ -76,14 +76,14 @@ namespace Recipe_Application
         // Method to scale the recipe ingredients by factors (0.5, 2, 3)
         public void RecipeScale()
         {
-            Console.Write("\n------ Scaling Factors ------\n0.5\n2\n3\nEnter the scaling factor of your choice:");
+            Console.Write($"\n------ Scaling Factors of {recipeName} recipe ------\n0.5\n2\n3\nEnter the scaling factor of your choice:");
             double factor = Convert.ToDouble(Console.ReadLine());
             ingredients.IngredientsScale(factor);
         }
         // Method resetting the ingredient quantities to the original values
         public void QuantityReset()
         {
-            Console.WriteLine("\n----- Quantity Reset -----");
+            Console.WriteLine($"\n----- Quantity Reset of {recipeName} recipe -----");
             ingredients.QuantityReset();
         }
 

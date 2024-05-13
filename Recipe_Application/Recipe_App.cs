@@ -52,7 +52,7 @@ namespace Recipe_Application
                             int numRecipe = 1;
                             foreach (var name in recipes.Keys)
                             {
-                                Console.WriteLine($"\n{numRecipe}.{name}");
+                                Console.WriteLine($"\n{numRecipe}.{name}" + "recipe");
                                 numRecipe++;
                             }
                             Console.Write("\nEnter the name of the recipe you want to select: ");
