@@ -65,7 +65,7 @@ namespace Recipe_Application
                                 // Display selected menu
                                 while (true)
                                 {
-                                    Console.WriteLine("\n------ Please choose an option you want to view of the selected recipe ------");
+                                    Console.WriteLine($"\n------ Please choose an option you want to view of '{selectedRecipe}' recipe ------");
                                     Console.WriteLine("\n1. Display recipe");
                                     Console.WriteLine("2. Scaling Factors");
                                     Console.WriteLine("3. Quantity Reset");
@@ -73,9 +73,9 @@ namespace Recipe_Application
                                     Console.WriteLine("5. Back to main menu");
 
                                     Console.Write("\nEnter your choice of option: ");
-                                    string recipeChoice = Console.ReadLine();
+                                    string recipeSelectedChoice = Console.ReadLine();
 
-                                    switch (recipeChoice)
+                                    switch (recipeSelectedChoice)
                                     {
                                         case "1":
 
@@ -107,13 +107,13 @@ namespace Recipe_Application
                                             Console.WriteLine("\nInvalid choice.Please enter one of the choices from the list of options!");
                                             break;
                                     }
-                                    if (recipeChoice == "5") 
+                                    if (recipeSelectedChoice == "5") 
                                     Console.WriteLine("\nReturend to Main menu!"); break;
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("\nRecipe not found!");
+                                Console.WriteLine("\nRecipe unavailable!");
                             }
                         }
                             break;
