@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Recipe_Application; // Import the Recipe_Application namespace to access the Ingredients class
 
-
+// Unit Test to test the total calories calculation
 namespace TotalCaloriesCalculate
 {
 

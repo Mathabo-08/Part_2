@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Recipe_Application
 {
+    // Chaanged how Ingredient class is accessed from internal to public so that the unit test can access it
     public class Ingredients
     {
         // Declare array variables 

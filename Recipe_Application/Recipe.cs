@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Recipe_Application
 {
+    // Added Calories section in the 'Display Recipe' method to display the information regarding calories
     internal class Recipe
     {
         // Declare variables

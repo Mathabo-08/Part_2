@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Recipe_Application
 {
+    // Modified the application from a single recipe application to a unlimited number of recipes application
     internal class Recipe_App 
     {
         public static void Main(string[] args)
