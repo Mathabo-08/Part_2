@@ -19,10 +19,10 @@ namespace Recipe_Application
         private string[] ingredientFoodGroup;
 
         // Delegate to notify the user when the total calories of a recipe exceed 300
-        public delegate void RecipeCaloriesNotification(int totalCalories);
+        public delegate void RecipeCaloriesNotify(int totalCalories);
 
         // Event to be triggered when the total calories exceed 300
-        public event RecipeCaloriesNotification OnRecipeCaloriesExceed;
+        public event RecipeCaloriesNotify ExceedRecipeCalories;
 
         // Method to prompt the user to enter the ingredient details
         public void GetIngreDetails()
@@ -43,29 +43,30 @@ namespace Recipe_Application
                 Console.Write("\nEnter the name of the Ingredient: ");
                 ingredientName[i] = Console.ReadLine();
 
-                Console.Write("\nEnter the quantity of the ingredients (in decimal form): ");
+                Console.Write($"\nEnter the quantity of the ingredient (in decimal form) for {ingredientName[i]}: ");
                 ingredientQuantity[i] = Convert.ToDouble(Console.ReadLine());
 
                 // Store the original ingredient quantity
                 origIngredientQuan[i] = ingredientQuantity[i];
 
-                Console.Write("\nEnter the unit of measurement: ");
+                Console.Write($"\nEnter the unit of measurement for {ingredientName}: ");
                 ingredientUnitsMeasurement[i] = Console.ReadLine();
 
                 // Array to store the number of calories and the food group of each ingredient
-                Console.Write("\nEnter the number of calories: ");
+                Console.Write($"\nEnter the number of calories for {ingredientName}: ");
                 ingredientCalories[i] = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("\nEnter the food group that the ingredient belongs to: ");
+                Console.Write($"\nEnter the food group that the {ingredientName} belongs to: ");
                 ingredientFoodGroup[i] = Console.ReadLine();
 
             }
 
             // Calculate total calories and trigger event if it exceeds 300
             int totalCalories = ingredientCalories.Sum();
-            if (totalCalories > 300 && OnRecipeCaloriesExceed != null)
+
+            if (totalCalories > 300 && ExceedRecipeCalories != null)
             {
-                OnRecipeCaloriesExceed(totalCalories);
+                ExceedRecipeCalories(totalCalories);
             }
 
         }
@@ -75,7 +76,7 @@ namespace Recipe_Application
         {
             for (int i = 0; i < ingredientName.Length; i++)
             {
-                Console.WriteLine($"\nIngredient {i + 1}:  \n{"Ingredient Name: " + ingredientName[i]} \n{"Quantity: " + ingredientQuantity[i]} \n{"Unit of measurement: " + ingredientUnitsMeasurement[i]} \n{"Number of Calories: " + ingredientCalories[i]} \n{"The food group that the ingredient belongs to:" + ingredientFoodGroup[i]}");
+                Console.WriteLine($"\nIngredient {i + 1}:  \n{"Ingredient Name: " + ingredientName[i]} \n{$"{ingredientName[i]} Quantity: " + ingredientQuantity[i]} \n{$"{ingredientName[i]} Unit of measurement: " + ingredientUnitsMeasurement[i]} \n{$"{ingredientName[i]} Number of Calories: " + ingredientCalories[i]} \n{$"{ingredientName[i]} Food group: " + ingredientFoodGroup[i]}");
             }
         }
 

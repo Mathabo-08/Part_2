@@ -13,7 +13,7 @@ namespace Recipe_Application
         private Ingredients ingredients;
         private Steps steps;
         private string recipeName;
-        private bool displaySelectedRecipe; // Use as flag to track if '1. Display Recipe' option from the seleceted recipe menu list 
+        private bool printSelectedRecipe; // Use as flag to track if '1. Display Recipe' option from the seleceted recipe menu list 
 
         // Constructor -> Allows Recipe class to have access to the properties and methods of the Ingredients Class and Steps Class
         public Recipe(string name)
@@ -21,16 +21,16 @@ namespace Recipe_Application
             ingredients = new Ingredients();
             steps = new Steps();
             recipeName = name;
-            displaySelectedRecipe = false;
+            printSelectedRecipe = false;
 
-            // Subscribe to the OnRecipeCaloriesExceed event to handle notifications
-            ingredients.OnRecipeCaloriesExceed += HandleRecipeCaloriesExceed;
+            // Support the OnRecipeCaloriesExceed event to handle notifications
+            ingredients.ExceedRecipeCalories += HandleExceedingRecipeCalories;
         }
 
         // Method to handle the notification when the total calories exceed 300
-        private void HandleRecipeCaloriesExceed(int totalCalories)
+        private void HandleExceedingRecipeCalories(int totalCalories)
         {
-            if (displaySelectedRecipe)
+            if (printSelectedRecipe)
             {
                 Console.WriteLine($"\nThe total calories of the recipe {recipeName} exceed 300!");
             }
@@ -57,19 +57,19 @@ namespace Recipe_Application
             Console.WriteLine("\n-------- Recipe -------");
             Console.WriteLine("\nRecipe Name: " + recipeName);
 
-            Console.WriteLine("\n ***** Ingredients *****");
+            Console.WriteLine($"\n ***** {recipeName} recipe ingredients *****");
             ingredients.DisplayIngredients();
 
             int totalCalories = ingredients.GetTotalCalories();
             Console.WriteLine("\n***** Calories *****");
             // Display the message if the total calories exceed 300. Flag is resetted before displaying total calories
-            displaySelectedRecipe = true;
+            printSelectedRecipe = true;
             Console.WriteLine("\nTotal Calories: " + totalCalories);
             // Call HandleRecipeCaloriesExceed only after displaying total calories
-            HandleRecipeCaloriesExceed(totalCalories);
+            HandleExceedingRecipeCalories(totalCalories);
 
 
-            Console.WriteLine("\n ***** Steps ***** ");
+            Console.WriteLine($"\n ***** {recipeName} recipe steps ***** ");
             steps.DisplaySteps();
         }
 

@@ -17,9 +17,10 @@ namespace Recipe_Application
             // Loop through the main menu list 
             while (true)
             {
-                Console.WriteLine("\n------ Please choose an option from main menu ------");
+                Console.WriteLine("------- Main Menu -------");
+                Console.WriteLine("\nPlease choose an option from main menu: ");
                 Console.WriteLine("1. Enter new recipe details");
-                Console.WriteLine("2. Select a recipe");
+                Console.WriteLine("2. Select a recipe from available recipes");
                 Console.WriteLine("3. Exit");
 
                 Console.Write("\nEnter your choice of option: ");
@@ -37,7 +38,7 @@ namespace Recipe_Application
                         recipe.GetRecipeDetails();
 
                         // Add recipe to SortedDictionary
-                        recipes.Add(recipeName, recipe);
+                        recipes.Add(recipeName, recipe); 
                         break;
                     case "2":
                         // Select a recipe
@@ -56,20 +57,21 @@ namespace Recipe_Application
                                 numRecipe++;
                             }
                             Console.Write("\nEnter the name of the recipe you want to select: ");
-                            string selectedRecipe = Console.ReadLine();
+                            string choosenRecipe = Console.ReadLine() + " " + "recipe";
 
 
-                            if (recipes.ContainsKey(selectedRecipe))
+                            if (recipes.ContainsKey(choosenRecipe))
                             {
 
                                 // Display selected menu
                                 while (true)
                                 {
-                                    Console.WriteLine($"\n------ Please choose an option you want to view of '{selectedRecipe}' recipe ------");
-                                    Console.WriteLine("\n1. Display recipe");
-                                    Console.WriteLine("2. Scaling Factors");
-                                    Console.WriteLine("3. Quantity Reset");
-                                    Console.WriteLine("4. Clear recipe");
+                                    Console.WriteLine("------- Selected Recipe Menu -------");
+                                    Console.WriteLine($"\nPlease choose an option you want to view of '{choosenRecipe}' recipe");
+                                    Console.WriteLine($"\n1. Display {choosenRecipe} recipe details");
+                                    Console.WriteLine($"2. Scaling Factors of {choosenRecipe} recipe");
+                                    Console.WriteLine($"3. Quantity Reset for {choosenRecipe} recipe");
+                                    Console.WriteLine($"4. Clear {choosenRecipe} recipe");
                                     Console.WriteLine("5. Back to main menu");
 
                                     Console.Write("\nEnter your choice of option: ");
@@ -80,23 +82,23 @@ namespace Recipe_Application
                                         case "1":
 
                                             // Displays recipe
-                                            recipes[selectedRecipe].DisplayRecipe(selectedRecipe);
+                                            recipes[choosenRecipe].DisplayRecipe(choosenRecipe);
                                             break;
 
                                         case "2":
                                             // Method to call to scale the recipe by factors like 0.5, 2, 3
-                                            recipes[selectedRecipe].RecipeScale();
+                                            recipes[choosenRecipe].RecipeScale();
                                             break;
 
                                         case "3":
                                             // Method to call to reset the quantities to the original values
-                                            recipes[selectedRecipe].QuantityReset();
+                                            recipes[choosenRecipe].QuantityReset();
                                             break;
 
                                         case "4":
                                             // Method to call to clear the full recipe
-                                            recipes[selectedRecipe].ClearRecipe();
-                                            Console.WriteLine("\nRecipe successfully cleared!");
+                                            recipes[choosenRecipe].ClearRecipe();
+                                            Console.WriteLine($"\nRecipe {choosenRecipe} successfully cleared!");
                                             break;
 
                                         case "5":

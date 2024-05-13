@@ -24,13 +24,13 @@ namespace TotalCaloriesCalculate
         public void TotalCaloriesCalculation()
         {
             // Set up the ingredient calories array
-            ingredients.ingredientCalories = new int[] {100, 200, 150 };
+            ingredients.ingredientCalories = new int[] {175, 137, 189 };
 
             // Call the GetTotalCalories method to calculate total calories
             int totalCalories = ingredients.GetTotalCalories();
 
             // Verify that the total calories match the expected value
-            Assert.AreEqual(450, totalCalories);    
+            Assert.AreEqual(501, totalCalories);    
         }
     }
 }
